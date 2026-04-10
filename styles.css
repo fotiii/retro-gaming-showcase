@@ -135,6 +135,12 @@ h1 {
   color: #232845;
   font-size: 0.92rem;
   background: rgba(255, 255, 255, 0.65);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.52rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
 .btn.primary {
@@ -142,6 +148,62 @@ h1 {
   color: #f7f8ff;
   border: none;
   box-shadow: 0 10px 24px rgba(21, 25, 48, 0.22);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: -130% auto -130% -40%;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: rotate(18deg) translateX(-260%);
+  transition: transform 500ms ease;
+}
+
+.btn:hover::before {
+  transform: rotate(18deg) translateX(420%);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(32, 39, 78, 0.18);
+}
+
+.cta .btn-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.cta .btn-trail {
+  transition: transform 220ms ease, opacity 220ms ease;
+  opacity: 0.75;
+}
+
+.cta:hover .btn-icon {
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+
+.cta:hover .btn-trail {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.btn.primary .btn-icon {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn.ghost .btn-icon {
+  background: rgba(74, 103, 255, 0.08);
+  border-color: rgba(74, 103, 255, 0.22);
 }
 
 .btn.small {
