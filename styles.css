@@ -309,6 +309,98 @@ h1 {
   padding: 1.2rem;
 }
 
+.carousel {
+  margin-top: 0.85rem;
+}
+
+.carousel-frame {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.carousel-track-wrap {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 18px 45px rgba(46, 34, 90, 0.16);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 360ms ease;
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  height: 320px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  border-radius: 12px;
+  background: rgba(17, 22, 42, 0.58);
+  color: #edf2ff;
+  padding: 0.65rem 0.75rem;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-caption h4 {
+  margin: 0 0 0.3rem;
+  color: #f6f8ff;
+}
+
+.carousel-caption p {
+  margin: 0;
+  color: #d7ddf3;
+  font-size: 0.86rem;
+}
+
+.carousel-btn {
+  border: 1px solid rgba(105, 114, 170, 0.32);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  color: #27305a;
+  font-size: 1rem;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+  margin-top: 0.45rem;
+}
+
+.carousel-dots button {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(40, 50, 95, 0.3);
+  cursor: pointer;
+}
+
+.carousel-dots button.active {
+  background: #425ddd;
+}
+
 .filters {
   margin-top: 0.8rem;
   border-radius: 16px;
@@ -397,6 +489,7 @@ h1 {
   .feature-card,
   .feature-card.cover,
   .feature-card.wide { grid-column: span 12; }
+  .carousel-slide { height: 260px; }
 }
 
 @media (max-width: 640px) {
@@ -406,4 +499,7 @@ h1 {
   .studio-grid { grid-template-columns: 1fr; }
   .hero.editorial,
   .page-header { padding: 1rem; }
+  .carousel-frame { grid-template-columns: 1fr; }
+  .carousel-btn { display: none; }
+  .carousel-slide { height: 220px; }
 }

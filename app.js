@@ -80,6 +80,37 @@ const styleFilter = byId("styleFilter");
 const grid = byId("referenceGrid");
 const resultCount = byId("resultCount");
 const clearBtn = byId("clearFilters");
+const carouselTrack = byId("carouselTrack");
+const carouselDots = byId("carouselDots");
+const carouselPrev = byId("carouselPrev");
+const carouselNext = byId("carouselNext");
+
+const carouselItems = [
+  {
+    title: "Neon Arcade Mood",
+    subtitle: "Свет, контраст и цветовые акценты для sci-fi UI",
+    image:
+      "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    title: "Pixel Desk Setup",
+    subtitle: "Референс на композицию и освещение dev-кадров",
+    image:
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    title: "Retro Controller Focus",
+    subtitle: "Тактильность объектов и close-up под UI баннеры",
+    image:
+      "https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1600&q=80"
+  },
+  {
+    title: "Cinematic Darkness",
+    subtitle: "Low-key сцены для horror/minimal направлений",
+    image:
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80"
+  }
+];
 
 function setOptions(selectEl, values) {
   selectEl.innerHTML = "";
@@ -176,4 +207,87 @@ if (clearBtn) {
     if (styleFilter) styleFilter.value = "";
     applyFilters();
   });
+}
+
+if (carouselTrack && carouselDots) {
+  let currentSlide = 0;
+  let autoSlideTimer = null;
+
+  function renderCarousel() {
+    carouselTrack.innerHTML = "";
+    carouselDots.innerHTML = "";
+
+    carouselItems.forEach((item, index) => {
+      const slide = document.createElement("article");
+      slide.className = "carousel-slide";
+      slide.innerHTML =
+        '<img src="' +
+        item.image +
+        '" alt="' +
+        item.title +
+        '" loading="lazy" />' +
+        '<div class="carousel-caption"><h4>' +
+        item.title +
+        "</h4><p>" +
+        item.subtitle +
+        "</p></div>";
+      carouselTrack.appendChild(slide);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Слайд " + (index + 1));
+      dot.addEventListener("click", () => {
+        goToSlide(index);
+        resetAutoSlide();
+      });
+      carouselDots.appendChild(dot);
+    });
+  }
+
+  function updateCarouselUI() {
+    carouselTrack.style.transform = "translateX(-" + currentSlide * 100 + "%)";
+    [...carouselDots.children].forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function goToSlide(index) {
+    if (index < 0) {
+      currentSlide = carouselItems.length - 1;
+    } else if (index >= carouselItems.length) {
+      currentSlide = 0;
+    } else {
+      currentSlide = index;
+    }
+    updateCarouselUI();
+  }
+
+  function startAutoSlide() {
+    autoSlideTimer = window.setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 4200);
+  }
+
+  function resetAutoSlide() {
+    if (autoSlideTimer) window.clearInterval(autoSlideTimer);
+    startAutoSlide();
+  }
+
+  renderCarousel();
+  updateCarouselUI();
+  startAutoSlide();
+
+  if (carouselPrev) {
+    carouselPrev.addEventListener("click", () => {
+      goToSlide(currentSlide - 1);
+      resetAutoSlide();
+    });
+  }
+
+  if (carouselNext) {
+    carouselNext.addEventListener("click", () => {
+      goToSlide(currentSlide + 1);
+      resetAutoSlide();
+    });
+  }
 }
