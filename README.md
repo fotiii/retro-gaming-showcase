@@ -1,17 +1,23 @@
-# Retro Gaming Showcase
+# Indie Frame
 
-Эффектный лендинг в стиле retro gaming / synthwave с glassmorphism и динамичными неоновыми акцентами.
+Многостраничный digital-журнал для инди-разработчиков с каталогом визуальных референсов.
+
+## Pages
+
+- `index.html` - главная страница журнала
+- `references.html` - поиск по референсам (годы, студии, стили)
+- `studios.html` - карта студий и визуальных подходов
 
 ## Stack
 
 - HTML5
-- CSS3 (responsive, gradients, glassmorphism)
-- Deploy-ready для Vercel (static)
+- CSS3
+- Vanilla JavaScript (фильтрация каталога)
 
 ## Local preview
 
 Откройте `index.html` в браузере.
 
-## Deploy на Vercel
+## Deploy
 
-Vercel корректно определит проект как static site.
+Подходит для GitHub Pages и Vercel как static project.

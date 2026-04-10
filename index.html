@@ -3,105 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retro Gaming Pulse</title>
+    <title>Indie Frame - Журнал вдохновения</title>
     <meta
       name="description"
-      content="Современный эффектный сайт про ретро-игры и гейминг."
+      content="Digital-дизайн журнал для инди-разработчиков: референсы, студии, стили и поиск по эпохам."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Orbitron:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Manrope:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="noise"></div>
-    <div class="scanlines"></div>
-    <header class="topbar glass">
-      <div class="brand">RETRO<span>GLOW</span></div>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
       <nav>
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-        <a href="#community">Community</a>
-        <a href="#events">Events</a>
+        <a class="active" href="./index.html">Журнал</a>
+        <a href="./references.html">Референсы</a>
+        <a href="./studios.html">Студии</a>
       </nav>
-      <button class="pill">Join</button>
     </header>
 
-    <main class="layout" id="home">
-      <section class="hero glass" data-parallax>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <p class="badge">Neon Arcade Culture</p>
-          <h1>Ретро гейминг как стиль жизни</h1>
-          <p>
-            От пиксельной классики до synthwave-эстетики: культовые игры,
-            железо, турниры и комьюнити в одном месте.
+    <main class="page">
+      <section class="hero editorial">
+        <div>
+          <p class="meta">Issue 04 · Spring 2026</p>
+          <h1>Визуальный журнал для инди-разработчиков</h1>
+          <p class="lead">
+            Исследуй лучшие арт-направления, UI-паттерны и атмосферу культовых игр.
+            Используй каталог референсов, чтобы собирать идеи под свой проект.
           </p>
           <div class="hero-actions">
-            <button class="primary">Explore Collection</button>
-            <button class="ghost">Watch Trailer</button>
+            <a class="btn primary" href="./references.html">Открыть каталог</a>
+            <a class="btn ghost" href="./studios.html">Изучить студии</a>
+          </div>
+          <div class="hero-proof">
+            <span>4.9/5 rating</span>
+            <span>1200+ references</span>
+            <span>400+ studios</span>
           </div>
         </div>
-      </section>
-
-      <aside class="panel" data-parallax>
-        <article class="glass card">
-          <h2>Game of the Week</h2>
-          <h3>Neon Runner 198X</h3>
-          <p>
-            Ритм, скорость и хардкорный саундтрек. Пройди 8‑битные трассы и
-            побей рекорды.
-          </p>
-          <div class="stats">
-            <div><span>Players</span><b>124K</b></div>
-            <div><span>Rate</span><b>9.4</b></div>
-            <div><span>Mode</span><b>Arcade</b></div>
+        <article class="hero-media-card">
+          <p class="meta">Editor spotlight</p>
+          <h3>Indie Visual DNA 2026</h3>
+          <div class="media-preview"></div>
+          <p class="muted-text">Тренды: tactile UI, dreamy lighting, graphic minimalism.</p>
+          <div class="mini-stat">
+            <strong>+24%</strong>
+            <span>скорость поиска референсов с фильтрами</span>
           </div>
         </article>
+      </section>
 
-        <article class="glass card mini" id="games">
-          <h2>Top Picks</h2>
-          <ul>
-            <li><span>01</span> Streets of Rage 2</li>
-            <li><span>02</span> Chrono Trigger</li>
-            <li><span>03</span> Metal Slug X</li>
-            <li><span>04</span> Castlevania IV</li>
-          </ul>
+      <section class="quick-cards">
+        <article class="quick-card">
+          <h4>Поиск по годам</h4>
+          <p>Сравнивай визуальные эпохи и динамику трендов.</p>
         </article>
-      </aside>
+        <article class="quick-card">
+          <h4>Поиск по студиям</h4>
+          <p>Изучай подходы команд с сильным art direction.</p>
+        </article>
+        <article class="quick-card">
+          <h4>Поиск по стилям</h4>
+          <p>Собирай moodboard под задачи своего проекта.</p>
+        </article>
+      </section>
+
+      <section class="mag-grid">
+        <article class="feature-card cover">
+          <p class="meta">Cover Story</p>
+          <h2>Как собирать moodboard под инди-игру за 20 минут</h2>
+          <p>
+            Методика от color script до кадра геймплея: тон, фактура, ритм и
+            фокус внимания.
+          </p>
+        </article>
+        <article class="feature-card">
+          <p class="meta">Visual Trend</p>
+          <h3>Painterly Pixel</h3>
+          <p>Пиксель-арт + живописные градиенты и мягкий post-processing.</p>
+        </article>
+        <article class="feature-card">
+          <p class="meta">UI Signals</p>
+          <h3>Diegetic HUD</h3>
+          <p>Интерфейс как часть мира: не поверх, а внутри атмосферы игры.</p>
+        </article>
+        <article class="feature-card wide">
+          <p class="meta">Editor Picks</p>
+          <h3>12 референсов, которые помогают придумать уникальный art direction</h3>
+          <p>
+            От low-poly dreamscape до gothic metroidvania - смотри подборку в
+            каталоге с фильтрами по годам, студиям и стилям.
+          </p>
+          <a class="link-inline" href="./references.html">Перейти к подборке</a>
+        </article>
+      </section>
     </main>
 
-    <section class="cards" id="community">
-      <article class="glass tile">
-        <h3>Pixel Stories</h3>
-        <p>Истории, интервью и редкие факты о легендах индустрии.</p>
-      </article>
-      <article class="glass tile">
-        <h3>Retro Hardware</h3>
-        <p>Обзоры консолей, CRT‑мониторов, геймпадов и модификаций.</p>
-      </article>
-      <article class="glass tile" id="events">
-        <h3>Live Events</h3>
-        <p>LAN‑вечеринки, speedrun-баттлы и офлайн/онлайн турниры.</p>
-      </article>
-    </section>
-
-    <footer>
-      <p>© 2026 RetroGlow. Built for the culture.</p>
+    <footer class="footer">
+      <p>© 2026 Indie Frame. Design journal for game makers.</p>
     </footer>
-    <script>
-      const parallaxItems = document.querySelectorAll("[data-parallax]");
-      window.addEventListener("mousemove", (event) => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 12;
-        const y = (event.clientY / window.innerHeight - 0.5) * 12;
-        parallaxItems.forEach((item, index) => {
-          const depth = index === 0 ? 1 : 0.65;
-          item.style.transform = "translate3d(" + -x * depth + "px," + -y * depth + "px,0)";
-        });
-      });
-    </script>
   </body>
 </html>

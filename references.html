@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог референсов · Indie Frame</title>
+    <meta
+      name="description"
+      content="Поиск референсов для инди игр по годам, студиям и визуальным стилям."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
+      <nav>
+        <a href="./index.html">Журнал</a>
+        <a class="active" href="./references.html">Референсы</a>
+        <a href="./studios.html">Студии</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="page-header">
+        <p class="meta">Reference Library</p>
+        <h1>Поиск вдохновения</h1>
+        <p class="lead">
+          Используй фильтры, чтобы быстро найти визуальные решения под жанр и
+          тон проекта.
+        </p>
+      </section>
+
+      <section class="filters">
+        <label>
+          Поиск
+          <input id="searchInput" type="search" placeholder="Название, студия, стиль..." />
+        </label>
+        <label>
+          Год
+          <select id="yearFilter"></select>
+        </label>
+        <label>
+          Студия
+          <select id="studioFilter"></select>
+        </label>
+        <label>
+          Стиль
+          <select id="styleFilter"></select>
+        </label>
+      </section>
+
+      <section class="result-row">
+        <p id="resultCount">Найдено: 0</p>
+        <button id="clearFilters" class="btn ghost small">Сбросить фильтры</button>
+      </section>
+
+      <section id="referenceGrid" class="reference-grid"></section>
+    </main>
+
+    <footer class="footer">
+      <p>Каталог обновляется редакцией Indie Frame.</p>
+    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
