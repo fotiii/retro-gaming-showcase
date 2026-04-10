@@ -12,7 +12,11 @@
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (фильтрация каталога)
+- Vanilla JavaScript (фильтрация каталога и карусель)
+
+## Ассеты
+
+В `assets/img/` лежит подборка пиксель-арта из ваших архивов **Pack 01 (Pixel Art)** и **pixel_16_woods v2 free** (личное использование). Полные распаковки не коммитятся — см. `.gitignore`.
 
 ## Local preview
 

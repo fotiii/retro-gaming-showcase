@@ -4,70 +4,103 @@ const references = [
     year: "2016",
     studio: "Heart Machine",
     style: "Synthwave Pixel",
-    notes: "Неоновые акценты, пустоты окружения, минималистичный UI."
+    notes: "Неоновые акценты, пустоты окружения, минималистичный UI.",
+    image: "./assets/img/ref-bg-02.png"
   },
   {
     title: "Hades",
     year: "2020",
     studio: "Supergiant Games",
     style: "Painterly Myth",
-    notes: "Контрастные эффекты, выразительные силуэты, премиальная анимация."
+    notes: "Контрастные эффекты, выразительные силуэты, премиальная анимация.",
+    image: "./assets/img/ref-bg-01.png"
   },
   {
     title: "Dead Cells",
     year: "2018",
     studio: "Motion Twin",
     style: "Pixel Action",
-    notes: "Ритм боя и читаемость hit-feedback в динамике."
+    notes: "Ритм боя и читаемость hit-feedback в динамике.",
+    image: "./assets/img/ref-thumb-01.png"
   },
   {
     title: "Inside",
     year: "2016",
     studio: "Playdead",
     style: "Cinematic Minimal",
-    notes: "Свет, туман, композиция кадра и тишина как инструмент."
+    notes: "Свет, туман, композиция кадра и тишина как инструмент.",
+    image: "./assets/img/ref-bg-03.png"
   },
   {
     title: "Cuphead",
     year: "2017",
     studio: "Studio MDHR",
     style: "Hand-Drawn Vintage",
-    notes: "Сильная стилизация под анимацию 30-х, единый арт-язык."
+    notes: "Сильная стилизация под анимацию 30-х, единый арт-язык.",
+    image: "./assets/img/ref-thumb-02.png"
   },
   {
     title: "Spiritfarer",
     year: "2020",
     studio: "Thunder Lotus",
     style: "Cozy Painterly",
-    notes: "Мягкий цвет, эмоциональные сцены, спокойный темп UI."
+    notes: "Мягкий цвет, эмоциональные сцены, спокойный темп UI.",
+    image: "./assets/img/ref-thumb-03.png"
   },
   {
     title: "Katana ZERO",
     year: "2019",
     studio: "Askiisoft",
     style: "Neo-Noir Pixel",
-    notes: "Глитч-ритм, резкий контраст и динамичный motion."
+    notes: "Глитч-ритм, резкий контраст и динамичный motion.",
+    image: "./assets/img/woods-tileset.png"
   },
   {
     title: "Signalis",
     year: "2022",
     studio: "rose-engine",
     style: "Retro Horror PSX",
-    notes: "Низкополигональная эстетика и тревожный интерфейс."
+    notes: "Низкополигональная эстетика и тревожный интерфейс.",
+    image: "./assets/img/ref-bg-03.png"
   },
   {
     title: "Sea of Stars",
     year: "2023",
     studio: "Sabotage Studio",
     style: "Modern Retro RPG",
-    notes: "Пиксель+объем, мягкий свет, насыщенная цветовая палитра."
+    notes: "Пиксель+объем, мягкий свет, насыщенная цветовая палитра.",
+    image: "./assets/img/deco-sun.png"
   },
   {
     title: "Cocoon",
     year: "2023",
     studio: "Geometric Interactive",
     style: "Abstract Sci-Fi",
-    notes: "Минимализм, формы и чистая визуальная логика."
+    notes: "Минимализм, формы и чистая визуальная логика.",
+    image: "./assets/img/deco-pine.png"
+  }
+];
+
+const carouselItems = [
+  {
+    title: "Лесной силуэт",
+    subtitle: "Ассет Pack 01 — атмосфера для обложек и разделителей",
+    image: "./assets/img/ref-bg-01.png"
+  },
+  {
+    title: "Пиксельный горизонт",
+    subtitle: "Фоновые планы для moodboard и key art",
+    image: "./assets/img/ref-bg-02.png"
+  },
+  {
+    title: "Ночной лес",
+    subtitle: "Контраст и читаемость силуэта в UI-журнале",
+    image: "./assets/img/ref-bg-03.png"
+  },
+  {
+    title: "Тайлсет 16×16",
+    subtitle: "pixel_16_woods — текстуры и реквизит для пиксель-UI",
+    image: "./assets/img/woods-tileset.png"
   }
 ];
 
@@ -84,33 +117,6 @@ const carouselTrack = byId("carouselTrack");
 const carouselDots = byId("carouselDots");
 const carouselPrev = byId("carouselPrev");
 const carouselNext = byId("carouselNext");
-
-const carouselItems = [
-  {
-    title: "Neon Arcade Mood",
-    subtitle: "Свет, контраст и цветовые акценты для sci-fi UI",
-    image:
-      "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=1600&q=80"
-  },
-  {
-    title: "Pixel Desk Setup",
-    subtitle: "Референс на композицию и освещение dev-кадров",
-    image:
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80"
-  },
-  {
-    title: "Retro Controller Focus",
-    subtitle: "Тактильность объектов и close-up под UI баннеры",
-    image:
-      "https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1600&q=80"
-  },
-  {
-    title: "Cinematic Darkness",
-    subtitle: "Low-key сцены для horror/minimal направлений",
-    image:
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80"
-  }
-];
 
 function setOptions(selectEl, values) {
   selectEl.innerHTML = "";
@@ -142,7 +148,13 @@ function renderCards(items) {
   items.forEach((item) => {
     const card = document.createElement("article");
     card.className = "ref-card";
+    const src = item.image || "./assets/img/ref-bg-01.png";
     card.innerHTML =
+      '<div class="ref-card-visual pixel-art-wrap">' +
+      '<img class="ref-card-img pixel-art" src="' +
+      src +
+      '" alt="" loading="lazy" />' +
+      "</div>" +
       '<p class="meta">' +
       item.year +
       " · " +
@@ -221,7 +233,7 @@ if (carouselTrack && carouselDots) {
       const slide = document.createElement("article");
       slide.className = "carousel-slide";
       slide.innerHTML =
-        '<img src="' +
+        '<img class="pixel-art" src="' +
         item.image +
         '" alt="' +
         item.title +
