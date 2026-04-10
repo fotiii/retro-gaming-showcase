@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GALLERY.DLL · Indie Frame</title>
+    <title>Галерея ассетов · Indie Frame</title>
     <meta
       name="description"
-      content="Галерея пиксель-ассетов: стеклянный UI, фильтры, карусель."
+      content="Галерея пиксель-ассетов с фильтрами и каруселью. Ссылки на площадки с графикой для игр."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,12 +23,11 @@
       <div class="ambient__liquid ambient__liquid--2"></div>
     </div>
     <div class="grain"></div>
-    <p class="tech-sidenote">Scan lines optional · blur-on-glass · dither-friendly</p>
 
     <header class="topbar">
       <div class="topbar__title">
-        ASSET_BROWSER.EXE
-        <span>READ-ONLY · LOCAL PNG</span>
+        Галерея
+        <span>локальные PNG · фильтры</span>
       </div>
       <div class="topbar__body">
         <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
@@ -41,15 +40,15 @@
 
     <main class="page">
       <section class="page-header">
-        <p class="meta">Directory listing</p>
-        <h1>Все ассеты из паков</h1>
+        <p class="meta">Каталог файлов</p>
+        <h1>Галерея пиксель-ассетов</h1>
         <p class="lead">
-          Каждая карточка — файл с диска: превью, имя, путь в zip. Фильтры по
-          типу и коллекции. Карусель — подвыборка из того же каталога.
+          У каждой карточки — превью, имя файла и путь внутри исходного архива.
+          Можно отфильтровать по типу (фон, вода, деревья и т.д.) и по коллекции.
         </p>
       </section>
 
-      <p id="catalogLoading" class="catalog-loading">LOADING CATALOG.JSON…</p>
+      <p id="catalogLoading" class="catalog-loading">Загрузка каталога…</p>
 
       <section class="carousel" aria-label="Подборка из галереи">
         <div class="carousel-frame">
@@ -68,7 +67,7 @@
           <input
             id="searchInput"
             type="search"
-            placeholder="filename, path, category…"
+            placeholder="имя файла, фрагмент пути, категория…"
           />
         </label>
         <label>
@@ -87,10 +86,31 @@
       </section>
 
       <section id="referenceGrid" class="reference-grid" tabindex="-1"></section>
+
+      <section class="resource-section resource-section--compact">
+        <h2 class="resource-section__title">Ещё ассеты для игр</h2>
+        <ul class="resource-list resource-list--inline">
+          <li>
+            <a href="https://opengameart.org/" rel="noopener noreferrer" target="_blank">OpenGameArt</a>
+          </li>
+          <li>
+            <a href="https://itch.io/game-assets" rel="noopener noreferrer" target="_blank">itch.io</a>
+          </li>
+          <li>
+            <a href="https://kenney.nl/assets" rel="noopener noreferrer" target="_blank">Kenney</a>
+          </li>
+          <li>
+            <a href="https://craftpix.net/freebies/" rel="noopener noreferrer" target="_blank">Craftpix</a>
+          </li>
+          <li>
+            <a href="https://lospec.com/" rel="noopener noreferrer" target="_blank">Lospec</a>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer class="footer">
-      <p>catalog.json + assets/img · не модифицируйте оригинальные zip без бэкапа</p>
+      <p><a href="./index.html">На главную</a> · каталог хранится в репозитории рядом с превью</p>
     </footer>
     <script src="./app.js"></script>
   </body>

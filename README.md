@@ -26,3 +26,13 @@
 ## Deploy
 
 Vercel / GitHub Pages как static site.
+
+## Где искать ассеты
+
+- [OpenGameArt](https://opengameart.org/)
+- [itch.io — Game assets](https://itch.io/game-assets)
+- [Kenney](https://kenney.nl/assets)
+- [Craftpix freebies](https://craftpix.net/freebies/)
+- [Lospec](https://lospec.com/)
+
+У каждого пака своя лицензия — проверяйте перед релизом.

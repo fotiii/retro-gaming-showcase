@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indie Frame — ASSET.SYS</title>
+    <title>Indie Frame — журнал и галерея пиксель-ассетов</title>
     <meta
       name="description"
-      content="Техно-журнал и галерея пиксель-ассетов: сетка, стекло, каталог файлов."
+      content="Подборка пиксель-графики для инди-проектов: галерея локальных паков и ссылки на площадки с лицензиями."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,12 +23,11 @@
       <div class="ambient__liquid ambient__liquid--2"></div>
     </div>
     <div class="grain"></div>
-    <p class="tech-sidenote">Pixel archive · liquid glass UI · local assets only</p>
 
     <header class="topbar">
       <div class="topbar__title">
-        INDIE FRAME.EXE
-        <span>PROGRAM NO.∞ · VOL.2026</span>
+        Indie Frame
+        <span>журнал · галерея · 2026</span>
       </div>
       <div class="topbar__body">
         <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
@@ -42,12 +41,12 @@
     <main class="page">
       <section class="hero editorial">
         <div>
-          <p class="meta">Launch · asset browser</p>
-          <h1>Цифровой каталог пиксель-ассетов</h1>
+          <p class="meta">О проекте</p>
+          <h1>Каталог пиксель-ассетов для инди</h1>
           <p class="lead">
-            Интерфейс в духе техно-постера и ретро-ОС: сетка, моноширинный текст,
-            панели из «жидкого стекла». Только ваши файлы из архивов — без чужих
-            обложек и выдуманных игр.
+            Здесь собраны превью файлов из ваших архивов: удобно смотреть палитру,
+            тип спрайта и путь внутри пакета. Оформление — сетка и стеклянные
+            панели, чтобы отделять интерфейс от самого пиксель-арта.
           </p>
           <div class="hero-actions">
             <a class="btn primary cta" href="./references.html">
@@ -57,19 +56,19 @@
             </a>
             <a class="btn ghost cta" href="./references.html#referenceGrid">
               <span class="btn-icon" aria-hidden="true">□</span>
-              <span>Сетка файлов</span>
+              <span>Все файлы списком</span>
               <span class="btn-trail" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="hero-proof">
-            <span>193 PNG · Pack 01</span>
-            <span>+ tileset 16×16</span>
-            <span>catalog.json</span>
+            <span>Pack 01 — 193 PNG</span>
+            <span>pixel_16_woods</span>
+            <span>Фильтры по типу</span>
           </div>
         </div>
         <article class="hero-media-card">
-          <p class="meta">Viewport</p>
-          <h3>FLAME³ · pixel layer</h3>
+          <p class="meta">Пример кадра</p>
+          <h3>Фон из коллекции</h3>
           <div class="media-preview">
             <img
               class="pixel-art"
@@ -80,12 +79,12 @@
             />
           </div>
           <p class="muted-text">
-            Превью как в окне ОС: чёткая рамка, стекло поверх сетки, пиксель без
-            сглаживания.
+            Превью без сглаживания, как в редакторе: удобно оценивать контраст и
+            силуэт.
           </p>
           <div class="mini-stat">
             <strong>194</strong>
-            <span>записей в каталоге · фильтр по типу и паку</span>
+            <span>позиций в каталоге галереи</span>
           </div>
         </article>
       </section>
@@ -109,44 +108,74 @@
           <img src="./assets/img/deco-rock.png" alt="" width="64" height="64" />
           <div>
             <h4>Тайлы</h4>
-            <p>Трава, камни, лист woods — единая палитра.</p>
+            <p>Трава, камни, единая палитра сцены.</p>
           </div>
         </article>
       </section>
 
       <section class="mag-grid">
         <article class="feature-card cover">
-          <p class="meta">Note.txt</p>
-          <h2>Moodboard за один сеанс</h2>
+          <p class="meta">Рабочий процесс</p>
+          <h2>Moodboard за один проход</h2>
           <p>
-            Собери референс из реальных имён файлов: путь в архиве, тип ассета,
-            превью 1:1.
+            Отфильтруйте файлы по типу и коллекции, откройте превью 1:1 и сверяйтесь
+            с путём в архиве — так проще держать единый стиль уровня.
           </p>
         </article>
         <article class="feature-card">
-          <p class="meta">Tag · PX</p>
-          <h3>Техно-сетка</h3>
-          <p>Как на плакате: линии, метки, моноширинный ритм.</p>
+          <p class="meta">Сетка</p>
+          <h3>Технический фон</h3>
+          <p>Линейка и моноширинный текст помогают воспринимать макет как чертёж.</p>
         </article>
         <article class="feature-card">
-          <p class="meta">Tag · UI</p>
-          <h3>Окна поверх слоя</h3>
-          <p>Панели с blur и бликом — «жидкое стекло» над пикселем.</p>
+          <p class="meta">Интерфейс</p>
+          <h3>Стеклянные панели</h3>
+          <p>Полупрозрачные блоки с размытием — контент отделён от фона сетки.</p>
         </article>
         <article class="feature-card wide">
-          <p class="meta">WARNING: REALITY</p>
-          <h3>Полная выгрузка PNG</h3>
+          <p class="meta">Локальные паки</p>
+          <h3>Полный набор PNG</h3>
           <p>
-            Все спрайты из Pack 01 и лист pixel_16_woods — в галерее с поиском и
-            каруселью.
+            Все спрайты из Pack 01 и лист pixel_16_woods доступны в галерее: поиск,
+            фильтры и карусель.
           </p>
-          <a class="link-inline" href="./references.html">Открыть GALLERY.DLL</a>
+          <a class="link-inline" href="./references.html">Перейти в галерею</a>
         </article>
+      </section>
+
+      <section class="resource-section">
+        <h2 class="resource-section__title">Где брать пиксель-ассеты</h2>
+        <p class="resource-section__lead">
+          Площадки с явными лицензиями — всегда читайте условия у каждого пака перед
+          коммерческим использованием.
+        </p>
+        <ul class="resource-list">
+          <li>
+            <a href="https://opengameart.org/" rel="noopener noreferrer" target="_blank">OpenGameArt</a>
+            — большой архив бесплатной 2D-графики и тайлсетов с указанием лицензий.
+          </li>
+          <li>
+            <a href="https://itch.io/game-assets" rel="noopener noreferrer" target="_blank">itch.io — Game assets</a>
+            — маркет и бесплатные раздачи от авторов; фильтры по пиксель-арту и цене.
+          </li>
+          <li>
+            <a href="https://kenney.nl/assets" rel="noopener noreferrer" target="_blank">Kenney</a>
+            — наборы в едином стиле, часто CC0; удобно для прототипов.
+          </li>
+          <li>
+            <a href="https://craftpix.net/freebies/" rel="noopener noreferrer" target="_blank">Craftpix — freebies</a>
+            — бесплатные секции; проверяйте лицензию на каждый пак.
+          </li>
+          <li>
+            <a href="https://lospec.com/" rel="noopener noreferrer" target="_blank">Lospec</a>
+            — палитры, туториалы и каталог пиксель-ресурсов.
+          </li>
+        </ul>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© 2026 Indie Frame · Powered by your packs · A+ pixel discipline</p>
+      <p>© 2026 Indie Frame</p>
     </footer>
   </body>
 </html>
