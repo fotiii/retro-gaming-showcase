@@ -1,124 +1,36 @@
-const references = [
-  {
-    title: "Hyper Light Drifter",
-    year: "2016",
-    studio: "Heart Machine",
-    style: "Synthwave Pixel",
-    notes: "Неоновые акценты, пустоты окружения, минималистичный UI.",
-    image: "./assets/img/ref-bg-02.png"
-  },
-  {
-    title: "Hades",
-    year: "2020",
-    studio: "Supergiant Games",
-    style: "Painterly Myth",
-    notes: "Контрастные эффекты, выразительные силуэты, премиальная анимация.",
-    image: "./assets/img/ref-bg-01.png"
-  },
-  {
-    title: "Dead Cells",
-    year: "2018",
-    studio: "Motion Twin",
-    style: "Pixel Action",
-    notes: "Ритм боя и читаемость hit-feedback в динамике.",
-    image: "./assets/img/ref-thumb-01.png"
-  },
-  {
-    title: "Inside",
-    year: "2016",
-    studio: "Playdead",
-    style: "Cinematic Minimal",
-    notes: "Свет, туман, композиция кадра и тишина как инструмент.",
-    image: "./assets/img/ref-bg-03.png"
-  },
-  {
-    title: "Cuphead",
-    year: "2017",
-    studio: "Studio MDHR",
-    style: "Hand-Drawn Vintage",
-    notes: "Сильная стилизация под анимацию 30-х, единый арт-язык.",
-    image: "./assets/img/ref-thumb-02.png"
-  },
-  {
-    title: "Spiritfarer",
-    year: "2020",
-    studio: "Thunder Lotus",
-    style: "Cozy Painterly",
-    notes: "Мягкий цвет, эмоциональные сцены, спокойный темп UI.",
-    image: "./assets/img/ref-thumb-03.png"
-  },
-  {
-    title: "Katana ZERO",
-    year: "2019",
-    studio: "Askiisoft",
-    style: "Neo-Noir Pixel",
-    notes: "Глитч-ритм, резкий контраст и динамичный motion.",
-    image: "./assets/img/woods-tileset.png"
-  },
-  {
-    title: "Signalis",
-    year: "2022",
-    studio: "rose-engine",
-    style: "Retro Horror PSX",
-    notes: "Низкополигональная эстетика и тревожный интерфейс.",
-    image: "./assets/img/ref-bg-03.png"
-  },
-  {
-    title: "Sea of Stars",
-    year: "2023",
-    studio: "Sabotage Studio",
-    style: "Modern Retro RPG",
-    notes: "Пиксель+объем, мягкий свет, насыщенная цветовая палитра.",
-    image: "./assets/img/deco-sun.png"
-  },
-  {
-    title: "Cocoon",
-    year: "2023",
-    studio: "Geometric Interactive",
-    style: "Abstract Sci-Fi",
-    notes: "Минимализм, формы и чистая визуальная логика.",
-    image: "./assets/img/deco-pine.png"
-  }
-];
-
-const carouselItems = [
-  {
-    title: "Лесной силуэт",
-    subtitle: "Ассет Pack 01 — атмосфера для обложек и разделителей",
-    image: "./assets/img/ref-bg-01.png"
-  },
-  {
-    title: "Пиксельный горизонт",
-    subtitle: "Фоновые планы для moodboard и key art",
-    image: "./assets/img/ref-bg-02.png"
-  },
-  {
-    title: "Ночной лес",
-    subtitle: "Контраст и читаемость силуэта в UI-журнале",
-    image: "./assets/img/ref-bg-03.png"
-  },
-  {
-    title: "Тайлсет 16×16",
-    subtitle: "pixel_16_woods — текстуры и реквизит для пиксель-UI",
-    image: "./assets/img/woods-tileset.png"
-  }
-];
-
 const byId = (id) => document.getElementById(id);
 
 const searchInput = byId("searchInput");
-const yearFilter = byId("yearFilter");
-const studioFilter = byId("studioFilter");
-const styleFilter = byId("styleFilter");
+const categoryFilter = byId("categoryFilter");
+const packFilter = byId("packFilter");
 const grid = byId("referenceGrid");
 const resultCount = byId("resultCount");
 const clearBtn = byId("clearFilters");
+const catalogLoading = byId("catalogLoading");
 const carouselTrack = byId("carouselTrack");
 const carouselDots = byId("carouselDots");
 const carouselPrev = byId("carouselPrev");
 const carouselNext = byId("carouselNext");
 
+let catalog = [];
+let carouselSlides = [];
+
+function imagePath(item) {
+  return "./assets/img/" + item.file;
+}
+
+async function loadCatalog() {
+  const res = await fetch("./assets/catalog.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("Не удалось загрузить catalog.json");
+  const data = await res.json();
+  catalog = data.map((row) => ({
+    ...row,
+    image: imagePath(row)
+  }));
+}
+
 function setOptions(selectEl, values) {
+  if (!selectEl) return;
   selectEl.innerHTML = "";
   const all = document.createElement("option");
   all.value = "";
@@ -133,13 +45,17 @@ function setOptions(selectEl, values) {
 }
 
 function initFilters() {
-  if (!yearFilter || !studioFilter || !styleFilter) return;
-  const years = [...new Set(references.map((item) => item.year))].sort();
-  const studios = [...new Set(references.map((item) => item.studio))].sort();
-  const styles = [...new Set(references.map((item) => item.style))].sort();
-  setOptions(yearFilter, years);
-  setOptions(studioFilter, studios);
-  setOptions(styleFilter, styles);
+  if (!categoryFilter || !packFilter) return;
+  const categories = [...new Set(catalog.map((item) => item.category))].sort();
+  const packs = [...new Set(catalog.map((item) => item.pack))].sort();
+  setOptions(categoryFilter, categories);
+  setOptions(packFilter, packs);
+}
+
+function shortSource(source) {
+  if (!source) return "";
+  const parts = source.split("/");
+  return parts.length > 2 ? parts.slice(-2).join("/") : source;
 }
 
 function renderCards(items) {
@@ -148,23 +64,25 @@ function renderCards(items) {
   items.forEach((item) => {
     const card = document.createElement("article");
     card.className = "ref-card";
-    const src = item.image || "./assets/img/ref-bg-01.png";
+    const src = item.image;
+    const meta = item.category + " · " + item.pack;
+    const tag = shortSource(item.source);
     card.innerHTML =
       '<div class="ref-card-visual pixel-art-wrap">' +
       '<img class="ref-card-img pixel-art" src="' +
       src +
-      '" alt="" loading="lazy" />' +
+      '" alt="' +
+      item.title +
+      '" loading="lazy" />' +
       "</div>" +
       '<p class="meta">' +
-      item.year +
-      " · " +
-      item.studio +
+      meta +
       "</p>" +
       "<h3>" +
       item.title +
       "</h3>" +
       '<p class="tag">' +
-      item.style +
+      tag +
       "</p>" +
       "<p>" +
       item.notes +
@@ -178,50 +96,58 @@ function renderCards(items) {
 
 function applyFilters() {
   const term = (searchInput?.value || "").trim().toLowerCase();
-  const year = yearFilter?.value || "";
-  const studio = studioFilter?.value || "";
-  const style = styleFilter?.value || "";
+  const category = categoryFilter?.value || "";
+  const pack = packFilter?.value || "";
 
-  const filtered = references.filter((item) => {
+  const filtered = catalog.filter((item) => {
     const haystack = (
       item.title +
       " " +
-      item.studio +
+      item.category +
       " " +
-      item.style +
+      item.pack +
+      " " +
+      (item.source || "") +
       " " +
       item.notes
     ).toLowerCase();
     const matchesSearch = !term || haystack.includes(term);
-    const matchesYear = !year || item.year === year;
-    const matchesStudio = !studio || item.studio === studio;
-    const matchesStyle = !style || item.style === style;
-    return matchesSearch && matchesYear && matchesStudio && matchesStyle;
+    const matchesCategory = !category || item.category === category;
+    const matchesPack = !pack || item.pack === pack;
+    return matchesSearch && matchesCategory && matchesPack;
   });
 
   renderCards(filtered);
 }
 
-if (grid) {
-  initFilters();
-  applyFilters();
-  [searchInput, yearFilter, studioFilter, styleFilter].forEach((el) => {
-    if (el) el.addEventListener("input", applyFilters);
-    if (el) el.addEventListener("change", applyFilters);
-  });
+function buildCarouselSlides() {
+  if (!catalog.length) return [];
+  const seen = new Set();
+  const picks = [];
+  const add = (item) => {
+    if (item && !seen.has(item.id)) {
+      seen.add(item.id);
+      picks.push(item);
+    }
+  };
+
+  catalog.filter((c) => c.category === "Фон").forEach(add);
+  catalog.filter((c) => c.category === "Тайлсет").forEach(add);
+  catalog.filter((c) => c.category === "Вода").slice(0, 3).forEach(add);
+  catalog.filter((c) => c.category === "Деревья").slice(0, 3).forEach(add);
+  catalog.filter((c) => c.category === "Камни").slice(0, 2).forEach(add);
+
+  const step = Math.max(1, Math.floor(catalog.length / 15));
+  for (let i = 0; i < catalog.length && picks.length < 18; i += step) {
+    add(catalog[i]);
+  }
+  return picks.slice(0, 16);
 }
 
-if (clearBtn) {
-  clearBtn.addEventListener("click", () => {
-    if (searchInput) searchInput.value = "";
-    if (yearFilter) yearFilter.value = "";
-    if (studioFilter) studioFilter.value = "";
-    if (styleFilter) styleFilter.value = "";
-    applyFilters();
-  });
-}
+function initCarousel() {
+  if (!carouselTrack || !carouselDots) return;
 
-if (carouselTrack && carouselDots) {
+  carouselSlides = buildCarouselSlides();
   let currentSlide = 0;
   let autoSlideTimer = null;
 
@@ -229,7 +155,7 @@ if (carouselTrack && carouselDots) {
     carouselTrack.innerHTML = "";
     carouselDots.innerHTML = "";
 
-    carouselItems.forEach((item, index) => {
+    carouselSlides.forEach((item, index) => {
       const slide = document.createElement("article");
       slide.className = "carousel-slide";
       slide.innerHTML =
@@ -241,7 +167,9 @@ if (carouselTrack && carouselDots) {
         '<div class="carousel-caption"><h4>' +
         item.title +
         "</h4><p>" +
-        item.subtitle +
+        item.category +
+        " · " +
+        shortSource(item.source) +
         "</p></div>";
       carouselTrack.appendChild(slide);
 
@@ -257,6 +185,7 @@ if (carouselTrack && carouselDots) {
   }
 
   function updateCarouselUI() {
+    if (!carouselSlides.length) return;
     carouselTrack.style.transform = "translateX(-" + currentSlide * 100 + "%)";
     [...carouselDots.children].forEach((dot, index) => {
       dot.classList.toggle("active", index === currentSlide);
@@ -264,9 +193,10 @@ if (carouselTrack && carouselDots) {
   }
 
   function goToSlide(index) {
+    if (!carouselSlides.length) return;
     if (index < 0) {
-      currentSlide = carouselItems.length - 1;
-    } else if (index >= carouselItems.length) {
+      currentSlide = carouselSlides.length - 1;
+    } else if (index >= carouselSlides.length) {
       currentSlide = 0;
     } else {
       currentSlide = index;
@@ -275,6 +205,7 @@ if (carouselTrack && carouselDots) {
   }
 
   function startAutoSlide() {
+    if (carouselSlides.length < 2) return;
     autoSlideTimer = window.setInterval(() => {
       goToSlide(currentSlide + 1);
     }, 4200);
@@ -286,6 +217,7 @@ if (carouselTrack && carouselDots) {
   }
 
   renderCarousel();
+  currentSlide = 0;
   updateCarouselUI();
   startAutoSlide();
 
@@ -302,4 +234,38 @@ if (carouselTrack && carouselDots) {
       resetAutoSlide();
     });
   }
+}
+
+async function boot() {
+  try {
+    await loadCatalog();
+    if (catalogLoading) catalogLoading.hidden = true;
+    initFilters();
+    applyFilters();
+    initCarousel();
+
+    [searchInput, categoryFilter, packFilter].forEach((el) => {
+      if (el) el.addEventListener("input", applyFilters);
+      if (el) el.addEventListener("change", applyFilters);
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        if (searchInput) searchInput.value = "";
+        if (categoryFilter) categoryFilter.value = "";
+        if (packFilter) packFilter.value = "";
+        applyFilters();
+      });
+    }
+  } catch (e) {
+    if (catalogLoading) {
+      catalogLoading.textContent =
+        "Ошибка загрузки каталога. Проверьте, что assets/catalog.json доступен.";
+    }
+    console.error(e);
+  }
+}
+
+if (grid || carouselTrack) {
+  boot();
 }

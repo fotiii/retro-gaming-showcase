@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог референсов · Indie Frame</title>
+    <title>Галерея ассетов · Indie Frame</title>
     <meta
       name="description"
-      content="Поиск референсов для инди игр по годам, студиям и визуальным стилям."
+      content="Каталог пиксель-ассетов: фоны, тайлы, декор. Фильтры по типу и паку."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,22 +22,23 @@
       <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
       <nav>
         <a href="./index.html">Журнал</a>
-        <a class="active" href="./references.html">Референсы</a>
-        <a href="./studios.html">Студии</a>
+        <a class="active" href="./references.html">Галерея</a>
       </nav>
     </header>
 
     <main class="page">
       <section class="page-header">
-        <p class="meta">Reference Library</p>
-        <h1>Поиск вдохновения</h1>
+        <p class="meta">Asset gallery</p>
+        <h1>Все ассеты из ваших паков</h1>
         <p class="lead">
-          Используй фильтры, чтобы быстро найти визуальные решения под жанр и
-          тон проекта.
+          Каждая карточка — реальный файл из архива: превью совпадает с именем и
+          путём в паке. Фильтруй по типу (фон, вода, деревья…) и по коллекции.
         </p>
       </section>
 
-      <section class="carousel" aria-label="Карусель визуальных референсов">
+      <p id="catalogLoading" class="catalog-loading">Загрузка каталога…</p>
+
+      <section class="carousel" aria-label="Подборка из галереи">
         <div class="carousel-frame">
           <button id="carouselPrev" class="carousel-btn" type="button" aria-label="Предыдущий слайд">←</button>
           <div class="carousel-track-wrap">
@@ -51,32 +52,32 @@
       <section class="filters">
         <label>
           Поиск
-          <input id="searchInput" type="search" placeholder="Название, студия, стиль..." />
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Имя файла, путь в паке, тип…"
+          />
         </label>
         <label>
-          Год
-          <select id="yearFilter"></select>
+          Тип
+          <select id="categoryFilter"></select>
         </label>
         <label>
-          Студия
-          <select id="studioFilter"></select>
-        </label>
-        <label>
-          Стиль
-          <select id="styleFilter"></select>
+          Коллекция
+          <select id="packFilter"></select>
         </label>
       </section>
 
       <section class="result-row">
         <p id="resultCount">Найдено: 0</p>
-        <button id="clearFilters" class="btn ghost small">Сбросить фильтры</button>
+        <button id="clearFilters" class="btn ghost small" type="button">Сбросить фильтры</button>
       </section>
 
-      <section id="referenceGrid" class="reference-grid"></section>
+      <section id="referenceGrid" class="reference-grid" tabindex="-1"></section>
     </main>
 
     <footer class="footer">
-      <p>Каталог обновляется редакцией Indie Frame.</p>
+      <p>Каталог строится из assets/catalog.json — все превью из ваших zip.</p>
     </footer>
     <script src="./app.js"></script>
   </body>
