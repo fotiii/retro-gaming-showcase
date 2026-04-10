@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Gaming Pulse</title>
+    <meta
+      name="description"
+      content="Современный эффектный сайт про ретро-игры и гейминг."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="scanlines"></div>
+    <header class="topbar glass">
+      <div class="brand">RETRO<span>GLOW</span></div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+      </nav>
+      <button class="pill">Join</button>
+    </header>
+
+    <main class="layout" id="home">
+      <section class="hero glass" data-parallax>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="badge">Neon Arcade Culture</p>
+          <h1>Ретро гейминг как стиль жизни</h1>
+          <p>
+            От пиксельной классики до synthwave-эстетики: культовые игры,
+            железо, турниры и комьюнити в одном месте.
+          </p>
+          <div class="hero-actions">
+            <button class="primary">Explore Collection</button>
+            <button class="ghost">Watch Trailer</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel" data-parallax>
+        <article class="glass card">
+          <h2>Game of the Week</h2>
+          <h3>Neon Runner 198X</h3>
+          <p>
+            Ритм, скорость и хардкорный саундтрек. Пройди 8‑битные трассы и
+            побей рекорды.
+          </p>
+          <div class="stats">
+            <div><span>Players</span><b>124K</b></div>
+            <div><span>Rate</span><b>9.4</b></div>
+            <div><span>Mode</span><b>Arcade</b></div>
+          </div>
+        </article>
+
+        <article class="glass card mini" id="games">
+          <h2>Top Picks</h2>
+          <ul>
+            <li><span>01</span> Streets of Rage 2</li>
+            <li><span>02</span> Chrono Trigger</li>
+            <li><span>03</span> Metal Slug X</li>
+            <li><span>04</span> Castlevania IV</li>
+          </ul>
+        </article>
+      </aside>
+    </main>
+
+    <section class="cards" id="community">
+      <article class="glass tile">
+        <h3>Pixel Stories</h3>
+        <p>Истории, интервью и редкие факты о легендах индустрии.</p>
+      </article>
+      <article class="glass tile">
+        <h3>Retro Hardware</h3>
+        <p>Обзоры консолей, CRT‑мониторов, геймпадов и модификаций.</p>
+      </article>
+      <article class="glass tile" id="events">
+        <h3>Live Events</h3>
+        <p>LAN‑вечеринки, speedrun-баттлы и офлайн/онлайн турниры.</p>
+      </article>
+    </section>
+
+    <footer>
+      <p>© 2026 RetroGlow. Built for the culture.</p>
+    </footer>
+    <script>
+      const parallaxItems = document.querySelectorAll("[data-parallax]");
+      window.addEventListener("mousemove", (event) => {
+        const x = (event.clientX / window.innerWidth - 0.5) * 12;
+        const y = (event.clientY / window.innerHeight - 0.5) * 12;
+        parallaxItems.forEach((item, index) => {
+          const depth = index === 0 ? 1 : 0.65;
+          item.style.transform = "translate3d(" + -x * depth + "px," + -y * depth + "px,0)";
+        });
+      });
+    </script>
+  </body>
+</html>
