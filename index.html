@@ -3,59 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indie Frame - Журнал вдохновения</title>
+    <title>Indie Frame — ASSET.SYS</title>
     <meta
       name="description"
-      content="Журнал и галерея пиксель-ассетов для инди-разработчиков: ваши паки, честные превью, фильтры."
+      content="Техно-журнал и галерея пиксель-ассетов: сетка, стекло, каталог файлов."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Manrope:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient__grid"></div>
+      <div class="ambient__liquid"></div>
+      <div class="ambient__liquid ambient__liquid--2"></div>
+    </div>
     <div class="grain"></div>
+    <p class="tech-sidenote">Pixel archive · liquid glass UI · local assets only</p>
+
     <header class="topbar">
-      <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
-      <nav>
-        <a class="active" href="./index.html">Журнал</a>
-        <a href="./references.html">Галерея</a>
-      </nav>
+      <div class="topbar__title">
+        INDIE FRAME.EXE
+        <span>PROGRAM NO.∞ · VOL.2026</span>
+      </div>
+      <div class="topbar__body">
+        <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
+        <nav>
+          <a class="active" href="./index.html">Журнал</a>
+          <a href="./references.html">Галерея</a>
+        </nav>
+      </div>
     </header>
 
     <main class="page">
       <section class="hero editorial">
         <div>
-          <p class="meta">Issue 04 · Spring 2026</p>
-          <h1>Пиксель-ассеты и вдохновение для инди-проектов</h1>
+          <p class="meta">Launch · asset browser</p>
+          <h1>Цифровой каталог пиксель-ассетов</h1>
           <p class="lead">
-            Разобранный каталог файлов из ваших архивов: сотни превью, фильтры по
-            типу и паку. Без выдуманных «игр» — только реальные спрайты и тайлы.
+            Интерфейс в духе техно-постера и ретро-ОС: сетка, моноширинный текст,
+            панели из «жидкого стекла». Только ваши файлы из архивов — без чужих
+            обложек и выдуманных игр.
           </p>
           <div class="hero-actions">
             <a class="btn primary cta" href="./references.html">
-              <span class="btn-icon" aria-hidden="true">✦</span>
+              <span class="btn-icon" aria-hidden="true">&gt;</span>
               <span>Открыть галерею</span>
               <span class="btn-trail" aria-hidden="true">→</span>
             </a>
             <a class="btn ghost cta" href="./references.html#referenceGrid">
-              <span class="btn-icon" aria-hidden="true">◌</span>
-              <span>Сетка ассетов</span>
+              <span class="btn-icon" aria-hidden="true">□</span>
+              <span>Сетка файлов</span>
               <span class="btn-trail" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="hero-proof">
-            <span>190+ файлов Pack 01</span>
-            <span>+ тайлсет 16×16</span>
-            <span>Фильтры по типу</span>
+            <span>193 PNG · Pack 01</span>
+            <span>+ tileset 16×16</span>
+            <span>catalog.json</span>
           </div>
         </div>
         <article class="hero-media-card">
-          <p class="meta">Editor spotlight</p>
-          <h3>Indie Visual DNA 2026</h3>
+          <p class="meta">Viewport</p>
+          <h3>FLAME³ · pixel layer</h3>
           <div class="media-preview">
             <img
               class="pixel-art"
@@ -65,10 +79,13 @@
               height="400"
             />
           </div>
-          <p class="muted-text">Пример фона из Pack 01 — так же выглядит файл в архиве.</p>
+          <p class="muted-text">
+            Превью как в окне ОС: чёткая рамка, стекло поверх сетки, пиксель без
+            сглаживания.
+          </p>
           <div class="mini-stat">
             <strong>194</strong>
-            <span>позиций в catalog.json (все PNG + лист woods)</span>
+            <span>записей в каталоге · фильтр по типу и паку</span>
           </div>
         </article>
       </section>
@@ -77,59 +94,59 @@
         <article class="quick-card">
           <img src="./assets/img/deco-sun.png" alt="" width="64" height="64" />
           <div>
-            <h4>Фоны и силуэты</h4>
-            <p>Горизонты для шапок, титульных экранов и разделителей.</p>
+            <h4>Фоны</h4>
+            <p>Силуэты и планы для шапок и титульных кадров.</p>
           </div>
         </article>
         <article class="quick-card">
           <img src="./assets/img/deco-bush.png" alt="" width="64" height="64" />
           <div>
-            <h4>Вода и прибрежные детали</h4>
-            <p>Камыши, кувшинки, рябь — для карт и UI-акцентов.</p>
+            <h4>Вода</h4>
+            <p>Камыши, кувшинки — модульные акценты.</p>
           </div>
         </article>
         <article class="quick-card">
           <img src="./assets/img/deco-rock.png" alt="" width="64" height="64" />
           <div>
-            <h4>Тайлы и реквизит</h4>
-            <p>Трава, камни, кусты — единая палитра для сцены.</p>
+            <h4>Тайлы</h4>
+            <p>Трава, камни, лист woods — единая палитра.</p>
           </div>
         </article>
       </section>
 
       <section class="mag-grid">
         <article class="feature-card cover">
-          <p class="meta">Cover Story</p>
-          <h2>Как собирать moodboard под инди-игру за 20 минут</h2>
+          <p class="meta">Note.txt</p>
+          <h2>Moodboard за один сеанс</h2>
           <p>
-            Методика от color script до кадра геймплея: тон, фактура, ритм и
-            фокус внимания.
+            Собери референс из реальных имён файлов: путь в архиве, тип ассета,
+            превью 1:1.
           </p>
         </article>
         <article class="feature-card">
-          <p class="meta">Visual Trend</p>
-          <h3>Painterly Pixel</h3>
-          <p>Пиксель-арт + живописные градиенты и мягкий post-processing.</p>
+          <p class="meta">Tag · PX</p>
+          <h3>Техно-сетка</h3>
+          <p>Как на плакате: линии, метки, моноширинный ритм.</p>
         </article>
         <article class="feature-card">
-          <p class="meta">UI Signals</p>
-          <h3>Diegetic HUD</h3>
-          <p>Интерфейс как часть мира: не поверх, а внутри атмосферы игры.</p>
+          <p class="meta">Tag · UI</p>
+          <h3>Окна поверх слоя</h3>
+          <p>Панели с blur и бликом — «жидкое стекло» над пикселем.</p>
         </article>
         <article class="feature-card wide">
-          <p class="meta">Editor Picks</p>
-          <h3>Полная выгрузка PNG из ваших zip</h3>
+          <p class="meta">WARNING: REALITY</p>
+          <h3>Полная выгрузка PNG</h3>
           <p>
-            Каждый файл из Pack 01 (Pixel Art) и лист pixel_16_woods — в галерее с
-            превью и путём внутри архива.
+            Все спрайты из Pack 01 и лист pixel_16_woods — в галерее с поиском и
+            каруселью.
           </p>
-          <a class="link-inline" href="./references.html">Открыть галерею</a>
+          <a class="link-inline" href="./references.html">Открыть GALLERY.DLL</a>
         </article>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© 2026 Indie Frame. Design journal for game makers.</p>
+      <p>© 2026 Indie Frame · Powered by your packs · A+ pixel discipline</p>
     </footer>
   </body>
 </html>

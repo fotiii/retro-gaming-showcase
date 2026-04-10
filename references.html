@@ -3,40 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Галерея ассетов · Indie Frame</title>
+    <title>GALLERY.DLL · Indie Frame</title>
     <meta
       name="description"
-      content="Каталог пиксель-ассетов: фоны, тайлы, декор. Фильтры по типу и паку."
+      content="Галерея пиксель-ассетов: стеклянный UI, фильтры, карусель."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Manrope:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient__grid"></div>
+      <div class="ambient__liquid"></div>
+      <div class="ambient__liquid ambient__liquid--2"></div>
+    </div>
     <div class="grain"></div>
+    <p class="tech-sidenote">Scan lines optional · blur-on-glass · dither-friendly</p>
+
     <header class="topbar">
-      <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
-      <nav>
-        <a href="./index.html">Журнал</a>
-        <a class="active" href="./references.html">Галерея</a>
-      </nav>
+      <div class="topbar__title">
+        ASSET_BROWSER.EXE
+        <span>READ-ONLY · LOCAL PNG</span>
+      </div>
+      <div class="topbar__body">
+        <a class="brand" href="./index.html">INDIE<span>FRAME</span></a>
+        <nav>
+          <a href="./index.html">Журнал</a>
+          <a class="active" href="./references.html">Галерея</a>
+        </nav>
+      </div>
     </header>
 
     <main class="page">
       <section class="page-header">
-        <p class="meta">Asset gallery</p>
-        <h1>Все ассеты из ваших паков</h1>
+        <p class="meta">Directory listing</p>
+        <h1>Все ассеты из паков</h1>
         <p class="lead">
-          Каждая карточка — реальный файл из архива: превью совпадает с именем и
-          путём в паке. Фильтруй по типу (фон, вода, деревья…) и по коллекции.
+          Каждая карточка — файл с диска: превью, имя, путь в zip. Фильтры по
+          типу и коллекции. Карусель — подвыборка из того же каталога.
         </p>
       </section>
 
-      <p id="catalogLoading" class="catalog-loading">Загрузка каталога…</p>
+      <p id="catalogLoading" class="catalog-loading">LOADING CATALOG.JSON…</p>
 
       <section class="carousel" aria-label="Подборка из галереи">
         <div class="carousel-frame">
@@ -55,7 +68,7 @@
           <input
             id="searchInput"
             type="search"
-            placeholder="Имя файла, путь в паке, тип…"
+            placeholder="filename, path, category…"
           />
         </label>
         <label>
@@ -70,14 +83,14 @@
 
       <section class="result-row">
         <p id="resultCount">Найдено: 0</p>
-        <button id="clearFilters" class="btn ghost small" type="button">Сбросить фильтры</button>
+        <button id="clearFilters" class="btn ghost small" type="button">Сбросить</button>
       </section>
 
       <section id="referenceGrid" class="reference-grid" tabindex="-1"></section>
     </main>
 
     <footer class="footer">
-      <p>Каталог строится из assets/catalog.json — все превью из ваших zip.</p>
+      <p>catalog.json + assets/img · не модифицируйте оригинальные zip без бэкапа</p>
     </footer>
     <script src="./app.js"></script>
   </body>
