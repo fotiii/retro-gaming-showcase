@@ -1,13 +1,22 @@
-/* Indie Frame — technical grid + retro OS + liquid glass */
+/* Indie Frame — Y2K + technical grid + retro OS + liquid glass */
 
 :root {
-  --bg: #e4e4e0;
-  --bg-deep: #d8d8d2;
+  --bg: #ebe6dc;
+  --bg-deep: #ddd8cf;
   --ink: #0c0c0c;
   --ink-muted: #3d3d3a;
   --mint: #5a9d8a;
   --mint-bright: #6bc4a8;
   --mint-glow: rgba(90, 157, 138, 0.45);
+  --y2k-pink: #e93d82;
+  --y2k-electric: #2563eb;
+  --y2k-chrome: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(120, 170, 255, 0.2) 22%,
+    rgba(10, 36, 99, 0.95) 52%,
+    #061238 100%
+  );
   --win-blue: #0a2463;
   --win-blue-mid: #1e5799;
   --glass-bg: linear-gradient(
@@ -89,6 +98,132 @@ body {
   bottom: -20%;
   animation-delay: -11s;
   animation-duration: 26s;
+}
+
+/* Holo foil из пака Y2K — поверх сетки */
+.ambient__holo {
+  position: absolute;
+  inset: -5%;
+  background-image: url("./assets/img/y2k/holo-1.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  filter: saturate(140%);
+  animation: holoShift 28s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ambient__holo--2 {
+  background-image: url("./assets/img/y2k/holo-2.png");
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  animation-delay: -14s;
+  animation-duration: 34s;
+}
+
+@keyframes holoShift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(-2%, 1%) scale(1.03);
+    opacity: 0.14;
+  }
+}
+
+/* Плавающие фигуры Y2K (PNG из пака) */
+.y2k-floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.y2k-shape {
+  position: absolute;
+  width: clamp(56px, 11vw, 130px);
+  height: auto;
+  opacity: 0.22;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.12));
+  animation: y2kDrift 14s ease-in-out infinite;
+}
+
+.y2k-shape--2 {
+  animation-duration: 18s;
+  animation-delay: -3s;
+  opacity: 0.18;
+}
+
+.y2k-shape--3 {
+  animation-duration: 16s;
+  animation-delay: -7s;
+  width: clamp(48px, 9vw, 100px);
+}
+
+.y2k-shape--4 {
+  animation-duration: 20s;
+  animation-delay: -5s;
+  opacity: 0.15;
+}
+
+.y2k-shape--5 {
+  animation-duration: 12s;
+  animation-delay: -2s;
+  width: clamp(40px, 8vw, 88px);
+}
+
+.y2k-shape--6 {
+  animation-duration: 17s;
+  animation-delay: -9s;
+  opacity: 0.2;
+  filter: invert(1) drop-shadow(0 2px 6px rgba(233, 61, 130, 0.15));
+}
+
+.y2k-shape--1 {
+  top: 8%;
+  right: 6%;
+}
+
+.y2k-shape--2 {
+  top: 38%;
+  left: 3%;
+}
+
+.y2k-shape--3 {
+  bottom: 18%;
+  right: 12%;
+}
+
+.y2k-shape--4 {
+  top: 52%;
+  right: 22%;
+}
+
+.y2k-shape--5 {
+  bottom: 8%;
+  left: 18%;
+}
+
+.y2k-shape--6 {
+  top: 22%;
+  left: 28%;
+}
+
+@keyframes y2kDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(6px, -10px) rotate(4deg);
+  }
+  66% {
+    transform: translate(-8px, 6px) rotate(-3deg);
+  }
 }
 
 @keyframes liquidMorph {
@@ -174,14 +309,16 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.35rem 0.65rem;
-  background: linear-gradient(180deg, var(--win-blue-mid) 0%, var(--win-blue) 100%);
+  padding: 0.38rem 0.65rem;
+  background: var(--y2k-chrome);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
 .topbar__title span {
@@ -219,7 +356,7 @@ body {
 }
 
 .brand span {
-  color: var(--win-blue);
+  color: var(--y2k-electric);
 }
 
 nav {
@@ -971,12 +1108,21 @@ h1 {
 
 @media (prefers-reduced-motion: reduce) {
   .ambient__liquid,
-  .ambient__liquid--2 {
+  .ambient__liquid--2,
+  .ambient__holo,
+  .ambient__holo--2,
+  .y2k-shape {
     animation: none;
   }
 }
 
 @media (max-width: 640px) {
+  .y2k-shape--4,
+  .y2k-shape--5,
+  .y2k-shape--6 {
+    display: none;
+  }
+
   .topbar__title span {
     display: none;
   }
