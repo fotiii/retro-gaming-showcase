@@ -54,7 +54,7 @@
         <h1>Галерея пиксель-ассетов</h1>
         <p class="lead">
           У каждой карточки — превью, имя файла и путь внутри исходного архива.
-          Можно отфильтровать по типу (фон, вода, деревья и т.д.) и по коллекции.
+          Отметьте нужные PNG и скачайте одним ZIP; выбор сохраняется в браузере.
         </p>
       </section>
 
@@ -92,8 +92,21 @@
 
       <section class="result-row">
         <p id="resultCount">Найдено: 0</p>
-        <button id="clearFilters" class="btn ghost small" type="button">Сбросить</button>
+        <div class="result-actions">
+          <span id="selectionCount" class="selection-hint" aria-live="polite">Выбрано: 0</span>
+          <button id="selectFilteredBtn" class="btn ghost small" type="button">
+            Все в выдаче
+          </button>
+          <button id="clearSelectionBtn" class="btn ghost small" type="button" disabled>
+            Снять выбор
+          </button>
+          <button id="downloadSelectedBtn" class="btn primary small" type="button" disabled>
+            Скачать ZIP
+          </button>
+          <button id="clearFilters" class="btn ghost small" type="button">Сбросить фильтры</button>
+        </div>
       </section>
+      <p id="downloadStatus" class="download-status" hidden aria-live="polite"></p>
 
       <section id="referenceGrid" class="reference-grid" tabindex="-1"></section>
 
@@ -122,6 +135,7 @@
     <footer class="footer">
       <p><a href="./index.html">На главную</a> · каталог хранится в репозитории рядом с превью</p>
     </footer>
+    <script src="./assets/vendor/jszip.min.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

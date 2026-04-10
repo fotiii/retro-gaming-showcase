@@ -535,6 +535,17 @@ h1 {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.btn:disabled::before {
+  display: none;
+}
+
 .hero-proof {
   display: flex;
   flex-wrap: wrap;
@@ -829,6 +840,27 @@ h1 {
   gap: 0.45rem;
 }
 
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.selection-hint {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-right: 0.15rem;
+}
+
+.download-status {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
 .result-row p {
   margin: 0;
   color: var(--ink-muted);
@@ -852,10 +884,68 @@ h1 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.ref-card--selected {
+  box-shadow: var(--shadow-soft), 0 0 0 2px var(--mint), var(--shadow-inset);
+}
+
+.ref-card-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.55rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-bottom: 1px solid rgba(12, 12, 12, 0.12);
+}
+
+.ref-card-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ref-card-pick input {
+  width: 0.95rem;
+  height: 0.95rem;
+  accent-color: var(--mint);
+  cursor: pointer;
+}
+
+.ref-card-dl {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
+  border: 1px solid var(--ink);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 1px 1px 0 rgba(12, 12, 12, 0.1);
+}
+
+.ref-card-dl:hover {
+  background: rgba(90, 157, 138, 0.15);
+}
+
 .ref-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft), 0 12px 40px rgba(90, 157, 138, 0.12),
     var(--shadow-inset);
+}
+
+.ref-card--selected:hover {
+  box-shadow: var(--shadow-soft), 0 12px 40px rgba(90, 157, 138, 0.12),
+    0 0 0 2px var(--mint), var(--shadow-inset);
 }
 
 .ref-card-visual {
